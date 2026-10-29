@@ -1,4 +1,11 @@
-export type CoverKind = "trust" | "hud" | "scan" | "arp" | "packets" | "meter";
+export type CoverKind =
+  | "trust"
+  | "govern"
+  | "hud"
+  | "scan"
+  | "arp"
+  | "packets"
+  | "meter";
 
 export type Metric = {
   label: string;
@@ -25,7 +32,7 @@ export type Project = {
   metrics?: Metric[];
   metricsNote?: string;
   credit?: string;
-  links: { code?: string; paper?: string };
+  links: { code?: string; paper?: string; demo?: string };
   cover: CoverKind;
   featured: boolean;
 };
@@ -101,6 +108,70 @@ export const projects: Project[] = [
       paper: "https://doi.org/10.1109/NMITCON65824.2025.11188236",
     },
     cover: "trust",
+    featured: true,
+  },
+  {
+    slug: "governance-engine",
+    title: "Automated Integration & Documentation Engine",
+    short: "govflow",
+    subtitle:
+      "Governed IT automation with policy-as-code, approval gates and self-writing compliance docs",
+    year: "2026",
+    status: "Live · weekly runs",
+    type: "Hackathon project · rebuilt",
+    languages: "Python · YAML · Jinja",
+    summary:
+      "A governed IT automation workflow built from scratch: it integrates with GitHub and cloud configuration, checks everything against 17 policy-as-code rules, plans fixes behind a digest-bound approval gate, ships approved changes as pull requests and writes its own compliance documentation on top of a tamper-evident audit trail.",
+    about: [
+      "Compliance work usually splits into three disconnected jobs: someone scans, someone else fixes, and someone writes documentation for the auditors afterwards. govflow joins them into one governed pipeline. Each run collects resources, evaluates declarative YAML policies mapped to OpenSSF Scorecard and CIS benchmarks, plans remediation only for allowlisted actions and targets, and refuses to change anything until someone approves the SHA-256 digest of that exact plan.",
+      "It is an open-source rebuild of the automated compliance scanning tool that placed 2nd Runner-up at the DSU Cybersecurity Hackathon, where I presented the design process to cross-functional evaluation teams. The rebuild runs every week in GitHub Actions against my own repositories, publishes a live evidence site and keeps its hash-chained audit trail on a dedicated branch.",
+    ],
+    features: [
+      "Live GitHub integration: branch protection, security files, pinned actions and token permissions through the REST API",
+      "AWS and GCP configuration checks from offline snapshot files",
+      "17 policy-as-code checks in YAML, mapped to OpenSSF Scorecard and CIS benchmarks",
+      "Remediation plans limited to allowlisted actions and targets",
+      "Approvals bound to a SHA-256 digest of the exact plan",
+      "Approved fixes shipped as pull requests, never as direct pushes",
+      "Hash-chained, tamper-evident audit log with a verify command",
+      "Generated evidence site, Markdown report and JSON for every run",
+      "Weekly GitHub Actions run with a protected approval environment",
+    ],
+    solutions: [
+      "A small declarative condition language is parsed, never evaluated, so policies are safe to load and easy to review",
+      "Three-valued logic reports missing permissions as not assessed instead of guessing pass or fail",
+      "Every audit event stores the SHA-256 of the previous one, so edits, deletions and reordering are detected",
+      "Each run chains to the previous run's audit head on an evidence branch, with git history as a second record",
+      "Recorded API fixtures drive the real HTTP client, so the offline demo exercises production code paths",
+      "Least-privilege CI: SHA-pinned actions, per-job permissions and workflow inputs passed only through environment variables",
+    ],
+    stack: [
+      { group: "Core", items: ["Python", "Typer", "Pydantic", "httpx"] },
+      {
+        group: "Automation",
+        items: ["GitHub Actions", "GitHub REST API", "GitHub Pages"],
+      },
+      { group: "Documentation", items: ["Jinja", "Markdown", "JSON"] },
+      { group: "Quality", items: ["pytest", "mypy", "ruff"] },
+    ],
+    tags: [
+      "policy-as-code",
+      "devsecops",
+      "compliance-automation",
+      "audit-trail",
+      "github-actions",
+    ],
+    metrics: [
+      { label: "Policy checks", value: 17 },
+      { label: "Automated tests", value: 116 },
+      { label: "Test coverage", value: 97, suffix: "%" },
+    ],
+    metricsNote: "Figures from the repository's policy catalog and test suite.",
+    links: {
+      code: "https://github.com/CYSECPRP/automated-integration-documentation-engine",
+      demo: "https://cysecprp.github.io/automated-integration-documentation-engine/",
+    },
+    cover: "govern",
     featured: true,
   },
   {

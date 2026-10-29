@@ -87,6 +87,11 @@ export default function ProjectPage() {
               View code
             </Button>
           ) : null}
+          {project.links.demo ? (
+            <Button href={project.links.demo} external icon="arrow-up-right">
+              Live report
+            </Button>
+          ) : null}
           {project.links.paper ? (
             <Button href={project.links.paper} external icon="arrow-up-right">
               Read the paper

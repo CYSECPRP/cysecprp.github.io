@@ -4,6 +4,7 @@ import styles from "./ProjectCover.module.css";
 
 const CHROME: Record<CoverKind, { title: string; state: string }> = {
   trust: { title: "zt-dt · zero trust engine", state: "live" },
+  govern: { title: "govflow · governance run", state: "audited" },
   hud: { title: "deepguard · session scan", state: "scanning" },
   scan: { title: "web_security_scanner.py", state: "owasp" },
   arp: { title: "scanner.py · sample output", state: "scapy" },
@@ -113,6 +114,30 @@ function HudBody() {
           <b data-tone="allow">&lt; 2 s</b>
         </li>
       </ul>
+    </div>
+  );
+}
+
+function GovernBody() {
+  return (
+    <div className={styles.log}>
+      <p className={styles.prompt}>$ govflow scan --config govflow.yaml</p>
+      <p className={styles.dim}>12 resources · 17 policies · pass 15 · fail 22</p>
+      <p>
+        plan 6 actions · <b data-tone="allow">3 allowed</b> ·{" "}
+        <b data-tone="restrict">3 blocked</b> · digest 2af816aa
+      </p>
+      <p className={styles.prompt}>$ govflow apply --execute</p>
+      <p>
+        <b data-tone="isolate">refused</b> no approval for this plan digest
+      </p>
+      <p className={styles.prompt}>$ govflow approve --digest 2af816aa</p>
+      <p>
+        <b data-tone="allow">approved</b> · apply opened 3 pull requests
+      </p>
+      <p className={styles.rule}>
+        audit chain verified · 15 events · head af8a5f52
+      </p>
     </div>
   );
 }
@@ -235,6 +260,7 @@ function MeterBody() {
 
 const BODIES: Record<CoverKind, ComponentType> = {
   trust: TrustBody,
+  govern: GovernBody,
   hud: HudBody,
   scan: ScanBody,
   arp: ArpBody,

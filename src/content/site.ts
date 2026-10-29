@@ -307,7 +307,7 @@ export const credentials: Credential[] = [
   {
     period: "Hackathon",
     title: "2nd Runner-up — DSU Cybersecurity Hackathon",
-    org: "Built an automated compliance scanning tool",
+    org: "Automated compliance tool, rebuilt open source as govflow",
   },
 ];
 
@@ -316,13 +316,13 @@ export const resumeSummary =
 
 export const resumeAchievements = [
   "Global Rank (TryHackMe): Top 3% globally in technical challenges, validating practical skills in system analysis, network diagnostics and threat detection.",
-  "Hackathon: 2nd Runner-up at the DSU Cybersecurity Hackathon for building an automated compliance scanning tool.",
+  "Hackathon: 2nd Runner-up at the DSU Cybersecurity Hackathon for an automated compliance scanning tool, presented to cross-functional evaluation teams and since rebuilt as an open-source governance engine.",
   "Certification: Microsoft Professional Cybersecurity Certificate.",
 ];
 
 export const impact = [
   "Top 3% globally on TryHackMe — practical skill in system analysis, network diagnostics and threat detection",
-  "2nd Runner-up at the DSU Cybersecurity Hackathon for an automated compliance scanning tool",
+  "2nd Runner-up at the DSU Cybersecurity Hackathon — the compliance tool now runs weekly as an open-source governance engine",
   "Configuration checks automated across AWS and GCP environments at General Motors",
   "Faster processing of large-scale system logs and security alerts through optimized SQL queries",
   "Team prototype of an IEEE-published Zero-Trust Digital Twin for industrial control systems",
