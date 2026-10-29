@@ -60,10 +60,10 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Primary">
         <SectionLink
-          to="#about"
+          to="#top"
           className={styles.brand}
           onNavigate={closeMenu}
-          aria-label={`${site.shortName} — about`}
+          aria-label={`${site.shortName} — home`}
         >
           <ScrambleText text="Prajwal.R.P" highlight="." />
         </SectionLink>
@@ -72,14 +72,15 @@ export default function Header() {
             <li key={item.hash}>{renderLink(item, styles.link, true)}</li>
           ))}
         </ul>
-        <Link
+        <SectionLink
           ref={magnetic}
-          to="/"
+          to="#top"
           className={styles.mark}
+          onNavigate={closeMenu}
           aria-label={`${site.monogram} — home`}
         >
           {site.monogram}
-        </Link>
+        </SectionLink>
         <ul className={styles.list}>
           {NAV.slice(2).map((item) => (
             <li key={item.hash}>{renderLink(item, styles.link, true)}</li>
