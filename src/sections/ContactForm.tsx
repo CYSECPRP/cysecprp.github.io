@@ -49,13 +49,13 @@ export default function ContactForm() {
       email: email.trim(),
       message: message.trim(),
     };
+    const subject = `Portfolio contact — ${payload.name}`;
 
     if (!ENDPOINT) {
-      const subject = encodeURIComponent(`Portfolio contact — ${payload.name}`);
       const body = encodeURIComponent(
         `${payload.message}\n\n— ${payload.name} <${payload.email}>`,
       );
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
       setStatus({
         kind: "sent",
         message: "Your email app should open with the message ready to send.",
@@ -71,7 +71,7 @@ export default function ContactForm() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, _subject: subject }),
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       setStatus({
