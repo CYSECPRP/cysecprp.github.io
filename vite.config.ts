@@ -1,7 +1,8 @@
-import { copyFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { copyFileSync, mkdirSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv, type Plugin } from "vite";
+import { projects } from "./src/content/projects.ts";
 
 // GitHub Pages cannot send headers, so the CSP ships as a meta tag (build only: the dev server injects inline scripts).
 function contentSecurityPolicy(connectSources: string[]): Plugin {
@@ -32,17 +33,22 @@ function contentSecurityPolicy(connectSources: string[]): Plugin {
   };
 }
 
-// GitHub Pages serves 404.html for unknown paths, which lets the SPA router handle deep links.
-function spaFallback(): Plugin {
+// GitHub Pages serves /resume from resume.html with a 200 status; unknown paths get 404.html, which still boots the SPA.
+function staticRoutes(routes: string[]): Plugin {
   let outDir = "dist";
   return {
-    name: "prp-spa-fallback",
+    name: "prp-static-routes",
     apply: "build",
     configResolved(config) {
       outDir = resolve(config.root, config.build.outDir);
     },
     closeBundle() {
-      copyFileSync(resolve(outDir, "index.html"), resolve(outDir, "404.html"));
+      const index = resolve(outDir, "index.html");
+      for (const route of ["404", ...routes]) {
+        const page = resolve(outDir, `${route}.html`);
+        mkdirSync(dirname(page), { recursive: true });
+        copyFileSync(index, page);
+      }
     },
   };
 }
@@ -50,6 +56,13 @@ function spaFallback(): Plugin {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "VITE_");
   const connectSources = ["'self'"];
+  const routes = [
+    "resume",
+    "projects",
+    // Covers a /projects -> /projects/ directory redirect.
+    "projects/index",
+    ...projects.map((project) => `projects/${project.slug}`),
+  ];
 
   if (env.VITE_CONTACT_ENDPOINT) {
     connectSources.push(new URL(env.VITE_CONTACT_ENDPOINT).origin);
@@ -57,7 +70,11 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: env.VITE_BASE || "/",
-    plugins: [react(), contentSecurityPolicy(connectSources), spaFallback()],
+    plugins: [
+      react(),
+      contentSecurityPolicy(connectSources),
+      staticRoutes(routes),
+    ],
     build: {
       // Never inline fonts as data: URLs; the CSP only allows font-src 'self'.
       assetsInlineLimit: (filePath: string) =>
