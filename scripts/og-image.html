@@ -1,5 +1,6 @@
 <!doctype html>
-<!-- Source of public/og-image.png (1200x630); see README for the capture command. -->
+<!-- Source of public/og-image.png (1200x630). Capture it from the repo root after npm ci, in PowerShell:
+& "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe" --headless --hide-scrollbars --window-size=1200,630 --allow-file-access-from-files --virtual-time-budget=4000 --user-data-dir="$env:TEMP\og-edge" --screenshot="$PWD\public\og-image.png" "file:///$($PWD -replace '\\', '/')/scripts/og-image.html" -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -140,7 +141,14 @@
       <defs>
         <pattern id="dither" width="6" height="6" patternUnits="userSpaceOnUse">
           <rect width="3" height="3" fill="#3dff8f" fill-opacity="0.45" />
-          <rect x="3" y="3" width="3" height="3" fill="#3dff8f" fill-opacity="0.2" />
+          <rect
+            x="3"
+            y="3"
+            width="3"
+            height="3"
+            fill="#3dff8f"
+            fill-opacity="0.2"
+          />
         </pattern>
       </defs>
       <path
@@ -159,8 +167,20 @@
         stroke="#3dff8f"
         stroke-width="5"
       />
-      <circle cx="60" cy="97" r="8" fill="#050505" stroke="#3dff8f" stroke-width="4" />
-      <path d="M60 105v15" stroke="#3dff8f" stroke-width="5" stroke-linecap="round" />
+      <circle
+        cx="60"
+        cy="97"
+        r="8"
+        fill="#050505"
+        stroke="#3dff8f"
+        stroke-width="4"
+      />
+      <path
+        d="M60 105v15"
+        stroke="#3dff8f"
+        stroke-width="5"
+        stroke-linecap="round"
+      />
     </svg>
   </body>
 </html>

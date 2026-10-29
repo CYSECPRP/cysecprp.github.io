@@ -37,6 +37,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          # Formspree form URL from a repository variable; when unset the form falls back to mailto.
           VITE_CONTACT_ENDPOINT: ${{ vars.VITE_CONTACT_ENDPOINT }}
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
