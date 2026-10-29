@@ -175,7 +175,7 @@
   grid-column: 1 / -1;
   padding: 12px clamp(20px, 2.4vw, 32px);
   background: var(--ink);
-  color: var(--paper-40);
+  color: var(--paper-60);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;

@@ -75,7 +75,7 @@
 }
 
 .cellIndex {
-  color: var(--paper-40);
+  color: var(--paper-60);
   font-family: var(--font-mono);
   font-size: 12px;
 }

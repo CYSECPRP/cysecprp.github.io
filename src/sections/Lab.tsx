@@ -36,17 +36,17 @@ export default function Lab() {
               type="button"
               className={styles.row}
               onClick={() => openTerminal(item.command)}
-              aria-label={`${item.name}: ${item.tag}. Open in the terminal`}
               data-cursor-label="Run"
             >
               <span className={styles.name}>
-                <MagnifyText text={item.name} decorative strength={0.28} />
+                <MagnifyText text={item.name} strength={0.28} />
               </span>
               <span className={styles.rule} aria-hidden="true" />
               <span className={styles.tag}>{item.tag}</span>
               <span className={styles.arrow} aria-hidden="true">
                 →
               </span>
+              <span className="sr-only"> — open in the terminal</span>
             </button>
           </li>
         ))}

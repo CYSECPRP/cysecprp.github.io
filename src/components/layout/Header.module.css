@@ -79,7 +79,7 @@
 }
 
 .num {
-  color: var(--paper-40);
+  color: var(--paper-60);
 }
 
 .link[aria-current="true"] .num {

@@ -63,7 +63,7 @@ export default function Footer() {
 
         <nav className={styles.column} aria-label="Projects">
           <p className={styles.index}>01</p>
-          <h3 className={styles.heading}>Projects</h3>
+          <h2 className={styles.heading}>Projects</h2>
           <ul>
             {projects.map((project) => (
               <li key={project.slug}>
@@ -75,7 +75,7 @@ export default function Footer() {
 
         <nav className={styles.column} aria-label="Social">
           <p className={styles.index}>02</p>
-          <h3 className={styles.heading}>Social</h3>
+          <h2 className={styles.heading}>Social</h2>
           <ul>
             <li>
               <a href={site.github} target="_blank" rel="noopener noreferrer">
@@ -95,7 +95,7 @@ export default function Footer() {
 
         <nav className={styles.column} aria-label="Resume">
           <p className={styles.index}>03</p>
-          <h3 className={styles.heading}>Resume</h3>
+          <h2 className={styles.heading}>Resume</h2>
           <ul>
             <li>
               <Link to="/resume">View resume</Link>
@@ -113,7 +113,7 @@ export default function Footer() {
 
         <div className={styles.column}>
           <p className={styles.index}>04</p>
-          <h3 className={styles.heading}>{site.location.city}</h3>
+          <h2 className={styles.heading}>{site.location.city}</h2>
           <p>{site.location.region}</p>
           <p className={styles.coords}>{site.location.coords}</p>
         </div>

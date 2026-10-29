@@ -35,7 +35,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         ref={tilt}
         to={`/projects/${project.slug}`}
         className={styles.coverLink}
-        aria-label={`View details — ${project.title}`}
+        // The card's "View details" link is the accessible route; this one is for pointer users.
+        aria-hidden="true"
+        tabIndex={-1}
         data-cursor-label="View"
       >
         <ProjectCover kind={project.cover} />
