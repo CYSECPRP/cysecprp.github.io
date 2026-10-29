@@ -4,6 +4,9 @@ export const site = {
   firstName: "Prajwal",
   monogram: "PRP",
   handle: "CySecPrp",
+  url: "https://cysecprp.github.io",
+  description:
+    "Portfolio of Prajwal R Pattanshetti, cybersecurity student and software engineering intern at General Motors: network security, cloud automation on AWS and GCP, and AI-driven threat detection.",
   email: "prajwalrajupattanshetti@gmail.com",
   github: "https://github.com/cysecprp",
   githubLabel: "github.com/cysecprp",
@@ -23,6 +26,9 @@ export const site = {
   },
   tagline: "Security, automation and AI protecting real-world systems.",
 };
+
+export const projectsIntro =
+  "Research prototypes, security tools and experiments — each with a short case study of what it does and how it was built.";
 
 export const hero = {
   status: "Open to security roles & collaborations",

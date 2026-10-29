@@ -1,0 +1,166 @@
+<!doctype html>
+<!-- Source of public/og-image.png (1200x630); see README for the capture command. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Social preview</title>
+    <style>
+      @font-face {
+        font-family: "Big Shoulders Display";
+        src: url("../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2")
+          format("woff2");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "Geist";
+        src: url("../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2")
+          format("woff2");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("../node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2")
+          format("woff2");
+        font-weight: 100 900;
+      }
+
+      :root {
+        --ink: #050505;
+        --paper: #f2f2ee;
+        --accent: #3dff8f;
+      }
+
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        color: var(--paper);
+        font-family: "Geist", sans-serif;
+        background:
+          radial-gradient(
+            circle at 84% 46%,
+            rgb(61 255 143 / 0.2),
+            transparent 34%
+          ),
+          radial-gradient(rgb(242 242 238 / 0.09) 1px, transparent 1.6px) 0 0 /
+            18px 18px,
+          var(--ink);
+      }
+
+      .frame {
+        position: absolute;
+        inset: 24px;
+        border: 1px solid rgb(242 242 238 / 0.16);
+      }
+
+      .mono {
+        font-family: "Geist Mono", monospace;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .label {
+        position: absolute;
+        top: 72px;
+        left: 72px;
+        font-size: 22px;
+        color: var(--accent);
+      }
+
+      .name {
+        position: absolute;
+        top: 128px;
+        left: 66px;
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 170px;
+        font-weight: 800;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .role {
+        position: absolute;
+        top: 336px;
+        left: 72px;
+        font-size: 44px;
+        font-weight: 500;
+      }
+
+      .focus {
+        position: absolute;
+        top: 404px;
+        left: 72px;
+        font-size: 24px;
+        color: rgb(242 242 238 / 0.68);
+      }
+
+      .footer {
+        position: absolute;
+        right: 72px;
+        bottom: 64px;
+        left: 72px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 24px;
+      }
+
+      .url {
+        color: var(--accent);
+      }
+
+      .lock {
+        position: absolute;
+        top: 156px;
+        right: 88px;
+        width: 210px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame"></div>
+    <p class="label mono">[ PRP ] · Cybersecurity portfolio</p>
+    <h1 class="name">Prajwal R P</h1>
+    <p class="role">Cybersecurity &amp; Software Engineering</p>
+    <p class="focus mono">Network • Cloud • AI security</p>
+    <div class="footer mono">
+      <span class="url">cysecprp.github.io</span>
+      <span>Bengaluru, India</span>
+    </div>
+    <svg class="lock" viewBox="0 0 120 150" fill="none" aria-hidden="true">
+      <defs>
+        <pattern id="dither" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="3" height="3" fill="#3dff8f" fill-opacity="0.45" />
+          <rect x="3" y="3" width="3" height="3" fill="#3dff8f" fill-opacity="0.2" />
+        </pattern>
+      </defs>
+      <path
+        d="M84 66V40a24 24 0 0 0-48 0v8"
+        stroke="#f2f2ee"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+      <rect x="14" y="66" width="92" height="74" rx="10" fill="url(#dither)" />
+      <rect
+        x="14"
+        y="66"
+        width="92"
+        height="74"
+        rx="10"
+        stroke="#3dff8f"
+        stroke-width="5"
+      />
+      <circle cx="60" cy="97" r="8" fill="#050505" stroke="#3dff8f" stroke-width="4" />
+      <path d="M60 105v15" stroke="#3dff8f" stroke-width="5" stroke-linecap="round" />
+    </svg>
+  </body>
+</html>

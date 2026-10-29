@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { projects } from "../content/projects";
-import { site } from "../content/site";
+import { projectsIntro, site } from "../content/site";
 import { pad } from "../lib/format";
 import { useDocumentTitle } from "../lib/useDocumentTitle";
 import Icon from "../components/ui/Icon";
@@ -24,10 +24,7 @@ export default function ProjectsPage() {
           className={styles.title}
           scroll={false}
         />
-        <p className={styles.text}>
-          Research prototypes, security tools and experiments — each with a
-          short case study of what it does and how it was built.
-        </p>
+        <p className={styles.text}>{projectsIntro}</p>
       </header>
 
       <ol className={styles.list}>
