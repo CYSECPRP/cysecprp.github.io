@@ -1,0 +1,28 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  color: var(--paper-80);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    scale 0.35s var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  scale: 1.06;
+}
+
+.accent {
+  border-color: rgba(var(--accent-rgb), 0.5);
+  color: var(--accent);
+}

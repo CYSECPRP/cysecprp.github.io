@@ -1,0 +1,255 @@
+.intro {
+  padding: clamp(96px, 12vw, 180px) var(--gutter) clamp(64px, 8vw, 120px);
+}
+
+.head {
+  display: grid;
+  gap: 22px;
+  margin-bottom: clamp(40px, 6vw, 84px);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--h2);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.8fr);
+  align-items: start;
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.text {
+  display: grid;
+  gap: 28px;
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2.9vw, 46px);
+  font-weight: 400;
+  line-height: 1.06;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  max-width: 660px;
+  color: var(--paper-80);
+  font-size: 17px;
+}
+
+.profile {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  padding: 28px;
+  border: 1px solid var(--line-strong);
+  background: var(--stage);
+}
+
+.plus {
+  position: absolute;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.plus[data-pos="tl"] {
+  top: -9px;
+  left: -5px;
+}
+
+.plus[data-pos="br"] {
+  right: -5px;
+  bottom: -8px;
+}
+
+.profileTitle {
+  color: var(--paper-60);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.facts div {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.facts dt {
+  color: var(--paper-40);
+}
+
+.profileActions {
+  display: grid;
+  gap: 10px;
+}
+
+.rank {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 32px;
+  padding: clamp(56px, 8vw, 110px) var(--gutter);
+  border-top: 1px solid var(--line);
+}
+
+.rankText {
+  display: grid;
+  gap: 14px;
+}
+
+.rankLabel,
+.rankCaption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rankLabel {
+  color: var(--accent);
+}
+
+.rankCaption {
+  color: var(--paper-60);
+}
+
+.rankValue {
+  font-family: var(--font-display);
+  font-size: clamp(96px, 13vw, 230px);
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.rankFacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rankFacts dt {
+  margin-bottom: 4px;
+  color: var(--accent);
+}
+
+.rankMeta {
+  color: var(--paper-60);
+}
+
+.rankBody {
+  max-width: 470px;
+  margin-top: 8px;
+  color: var(--paper-80);
+}
+
+.rankVisual {
+  justify-self: end;
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 1;
+}
+
+.cards {
+  display: grid;
+  gap: clamp(56px, 8vw, 130px);
+  padding: clamp(32px, 5vw, 80px) var(--gutter) clamp(96px, 11vw, 170px);
+}
+
+.card {
+  width: min(100%, 1000px);
+}
+
+.flip {
+  justify-self: end;
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.flip .cardInner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+}
+
+.flip .cardVisual {
+  order: 2;
+}
+
+.cardVisual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--ink);
+}
+
+.cardBody {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 6px;
+}
+
+.cardTag {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: var(--h3);
+  font-weight: 400;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.cardText {
+  max-width: 440px;
+  color: var(--paper-80);
+}
+
+@media (max-width: 900px) {
+  .body,
+  .rank,
+  .cardInner,
+  .flip .cardInner {
+    grid-template-columns: 1fr;
+  }
+
+  .flip .cardVisual {
+    order: 0;
+  }
+
+  .rankVisual {
+    justify-self: center;
+  }
+}

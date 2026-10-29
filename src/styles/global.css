@@ -1,0 +1,301 @@
+@import "@fontsource-variable/big-shoulders-display";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/unbounded";
+@import "lenis/dist/lenis.css";
+
+:root {
+  --ink: #050505;
+  --stage: #0b0b0b;
+  --panel: #111111;
+  --paper: #f2f2ee;
+  --paper-80: rgba(242, 242, 238, 0.8);
+  --paper-60: rgba(242, 242, 238, 0.6);
+  --paper-40: rgba(242, 242, 238, 0.4);
+  --line: rgba(242, 242, 238, 0.12);
+  --line-strong: rgba(242, 242, 238, 0.28);
+  --accent: #3dff8f;
+  --accent-rgb: 61, 255, 143;
+  --accent-soft: rgba(var(--accent-rgb), 0.14);
+  --frame: 8px;
+  --gutter: clamp(18px, 2.8vw, 44px);
+  --header-h: 64px;
+  --font-display: "Big Shoulders Display Variable", "Arial Narrow", sans-serif;
+  --font-sans:
+    "Geist Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:
+    "Geist Mono Variable", ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-wordmark: "Unbounded Variable", "Arial Black", sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --h1: clamp(52px, 6.4vw, 112px);
+  --h2: clamp(60px, 8.4vw, 140px);
+  --h3: clamp(42px, 4.6vw, 78px);
+  color-scheme: dark;
+}
+
+:root[data-mode="redteam"] {
+  --accent: #ff3b4a;
+  --accent-rgb: 255, 59, 74;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.is-booting {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+pre {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Viewport frame */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 80;
+}
+
+body::before {
+  inset: 0;
+  border: var(--frame) solid var(--ink);
+}
+
+body::after {
+  inset: var(--frame);
+  border: 1px solid var(--line);
+}
+
+/* CRT scanlines */
+.crt {
+  position: fixed;
+  inset: 0;
+  z-index: 75;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.022) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Letters swell toward the cursor; lib/magnify.ts drives --m from 0 to 1. */
+[data-glyph] {
+  display: inline-block;
+}
+
+[data-magnify] [data-glyph] {
+  scale: calc(1 + var(--m, 0) * var(--magnify, 0.26));
+  translate: 0 calc(var(--m, 0) * -0.06em);
+  transform-origin: 50% 85%;
+  color: color-mix(
+    in srgb,
+    var(--accent) calc(var(--m, 0) * 100%),
+    currentColor
+  );
+}
+
+/* Cursor-following glow; trackSpotlight (lib/interactions.ts) feeds --spot-x / --spot-y. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+/* Painted under the cells, so only the 1px gaps between them light up. */
+.spotlight::before {
+  background: radial-gradient(
+    320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(var(--accent-rgb), 0.75),
+    transparent 70%
+  );
+}
+
+.spotlight::after {
+  z-index: 2;
+  background: radial-gradient(
+    560px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(var(--accent-rgb), 0.07),
+    transparent 45%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spotlight:hover::before,
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: translateY(-300%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+main {
+  display: block;
+  outline: none;
+}
+
+.route-fallback {
+  min-height: 100vh;
+}
+
+.noscript {
+  padding: 48px;
+  color: var(--paper);
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  body::before,
+  body::after,
+  #root > :not(main) {
+    display: none !important;
+  }
+}

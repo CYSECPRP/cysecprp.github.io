@@ -1,0 +1,29 @@
+.flag {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--paper-40);
+  opacity: 0.4;
+  transition:
+    opacity 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.flag svg {
+  width: 13px;
+  height: 13px;
+}
+
+.flag:hover,
+.flag:focus-visible {
+  color: var(--accent);
+  opacity: 1;
+  transform: rotate(-8deg);
+}
+
+.flag[data-captured="true"] {
+  color: var(--accent);
+  opacity: 1;
+}

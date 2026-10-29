@@ -1,0 +1,141 @@
+.skills {
+  padding: clamp(64px, 8vw, 120px) var(--gutter);
+  border-top: 1px solid var(--line);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--h3);
+  font-weight: 300;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.count {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  padding: 1px;
+  background: var(--line);
+}
+
+.cell {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  padding: clamp(20px, 2.4vw, 32px);
+  background: var(--ink);
+  transition: background-color 0.4s var(--ease-out);
+}
+
+.cell:hover {
+  background: var(--stage);
+}
+
+.plus {
+  position: absolute;
+  top: -10px;
+  left: -6px;
+  color: var(--paper-40);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.cellHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cellTitle {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cellIndex {
+  color: var(--paper-40);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.expertise {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.4fr) 1fr;
+  gap: 24px;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.expertiseTitle {
+  color: var(--paper-60);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.expertiseList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.3vw, 36px);
+  font-weight: 300;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.expertiseList li {
+  display: inline-flex;
+  gap: 18px;
+}
+
+.expertiseList span {
+  color: var(--accent);
+}
+
+.expertiseList li:last-child span {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid,
+  .expertise {
+    grid-template-columns: 1fr;
+  }
+}

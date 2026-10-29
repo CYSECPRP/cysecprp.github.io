@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#050505"/>
+  <rect x="4.5" y="4.5" width="55" height="55" fill="none" stroke="#3dff8f" stroke-width="3"/>
+  <text x="32" y="40" fill="#f2f2ee" font-family="Arial Black, Arial, sans-serif" font-size="19" font-weight="900" text-anchor="middle" letter-spacing="-0.5">PRP</text>
+  <rect x="44" y="45" width="8" height="3" fill="#3dff8f"/>
+</svg>

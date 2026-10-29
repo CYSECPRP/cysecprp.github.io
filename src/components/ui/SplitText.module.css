@@ -1,0 +1,21 @@
+.visual,
+.line {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  margin: -0.08em -0.02em -0.12em;
+  padding: 0.08em 0.02em 0.12em;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+}
+
+.visual[data-revealed] .word {
+  overflow: visible;
+}

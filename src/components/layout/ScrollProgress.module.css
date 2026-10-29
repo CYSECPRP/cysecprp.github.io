@@ -1,0 +1,13 @@
+.bar {
+  position: fixed;
+  top: var(--frame);
+  right: var(--frame);
+  left: var(--frame);
+  z-index: 81;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}

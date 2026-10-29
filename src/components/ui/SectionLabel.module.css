@@ -1,0 +1,23 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--paper-80);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.square {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  animation: blink 1.6s steps(2, jump-none) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.15;
+  }
+}

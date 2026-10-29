@@ -1,0 +1,72 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 20px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: translateY(101%);
+  transition: transform 0.45s var(--ease-out);
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  transform: translateY(0);
+}
+
+.outline {
+  background: rgba(5, 5, 5, 0.65);
+  color: var(--paper);
+}
+
+.solid {
+  border-color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.label {
+  position: relative;
+}
+
+.icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.button:hover .icon {
+  transform: translateX(3px);
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
